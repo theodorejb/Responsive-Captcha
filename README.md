@@ -17,9 +17,10 @@ TextCaptcha was originally created by Theodore Brown (http://designedbytheo.com)
 Usage guide
 -----------
 
-1. Initialize the TextCaptcha class
+1. Import and initialize the TextCaptcha class
 
         <?php
+            require 'TextCaptcha.php';
             $textCaptcha = new TextCaptcha();
         ?>
 
