@@ -22,7 +22,7 @@ Usage guide
         
                 try {
                     $textCaptcha->checkAnswer($captcha);
-                    // the captcha answer is correct
+                    // code to execute if the captcha answer is correct
                 } catch (Exception $exc) {
                     // the captcha answer is incorrect
                     $captchaError = $exc->getMessage(); // display this error message in your form
