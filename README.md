@@ -4,6 +4,7 @@ TextCaptcha
 Prevent form spam by generating random, accessible arithmetic questions with this lightweight PHP class.
 
 Examples:
+
 1. "What is fifteen divided by three?"
 2. "What is the sum of four and six?"
 3. "What is eight multiplied by two?"
