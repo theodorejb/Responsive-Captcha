@@ -22,8 +22,10 @@ Usage guide
         
                 try {
                     $textCaptcha->checkAnswer($captcha);
+                    // the captcha answer is correct
                 } catch (Exception $exc) {
-                    $captchaError = $exc->getMessage();
+                    // the captcha answer is incorrect
+                    $captchaError = $exc->getMessage(); // display this error message in your form
                 }
 
             }
