@@ -31,7 +31,7 @@ Usage guide
 
 3. Get a new question to display in your form
 
-    Important: only call the <pre>getNewQuestion()</pre> method AFTER checking the user's response, since it will replace the answer session variable.
+    Important: only call the `getNewQuestion()` method AFTER checking the user's response, since it will replace the answer session variable.
 
         <label for="captcha-field">
             <?php echo $textCaptcha->getNewQuestion() ?>
