@@ -11,16 +11,12 @@ Usage guide
 1. Initialize the TextCaptcha class
 
 <pre>
-<?php
     $textCaptcha = new TextCaptcha();
-?>
 </pre>
 
 2. Check whether the user's response is correct
 
 <pre>
-<?php
-
     if (isset($_POST['captcha'])) {
         $captcha = $_POST['captcha'];
         
@@ -31,7 +27,6 @@ Usage guide
         }
 
     }
-?>
 </pre>
 
 3. Get a new question to display in your form
