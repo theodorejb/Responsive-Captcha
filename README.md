@@ -5,10 +5,10 @@ Prevent form spam by generating random, accessible arithmetic questions with thi
 
 Examples:
 
-1. "What is fifteen divided by three?"
-2. "What is the sum of four and six?"
-3. "What is eight multiplied by two?"
-4. "What is five minus one?"
+* "What is fifteen divided by three?"
+* "What is the sum of four and six?"
+* "What is eight multiplied by two?"
+* "What is five minus one?"
 
 Users can respond with either the numeric or textual version of the answer (e.g. "16" or "sixteen").
 
