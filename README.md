@@ -9,6 +9,7 @@ Examples:
 * "What is the sum of four and six?"
 * "What is eight multiplied by two?"
 * "What is five minus one?"
+* "Which is largest: thirty, eighty-four, or thirty-nine?"
 
 Users can respond with either the numeric or textual version of the answer (e.g. "16" or "sixteen").
 
