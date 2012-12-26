@@ -34,6 +34,7 @@ class TextCaptcha {
             throw new Exception("The captcha answer session variable is not set");
         else {
             $storedAnswer = $_SESSION[$this->sessionVariableName];
+            unset($_SESSION[$this->sessionVariableName]);
 
             // both numeric and textual answers are acceptable
             if ($answer == $storedAnswer || $answer == $this->getWordFromNumber($storedAnswer))
@@ -49,17 +50,23 @@ class TextCaptcha {
      * Important: call this method AFTER checking the user's response since it will replace the session answer variable
      */
     public function getNewQuestion() {
-        // get a random number between 1 and 4 to determine whether to add, subtract, multiply, or divide
-        $function = rand(1, 4);
+        if (rand(0, 2) == 2) {
+            // a one-in-three chance of getting a random logic question
+            return $this->getNumberProblem();
+        } else {
+            // get a random arithmetic question
+            // get a random number between 1 and 4 to determine whether to add, subtract, multiply, or divide
+            $function = rand(1, 4);
 
-        if ($function == 1)
-            return $this->getAdditionProblem(); // add
-        elseif ($function == 2)
-            return $this->getSubtractionProblem(); // subtract
-        elseif ($function == 3)
-            return $this->getMultiplicationProblem(); // multiply
-        else
-            return $this->getDivisionProblem(); // divide
+            if ($function == 1)
+                return $this->getAdditionProblem(); // add
+            elseif ($function == 2)
+                return $this->getSubtractionProblem(); // subtract
+            elseif ($function == 3)
+                return $this->getMultiplicationProblem(); // multiply
+            else
+                return $this->getDivisionProblem(); // divide
+        }
     }
 
     /**
@@ -72,12 +79,15 @@ class TextCaptcha {
         $num1 = rand(0, 10);
         $num2 = rand(0, 10);
 
-        $_SESSION[$this->sessionVariableName] = $num1 + $num2;
+        $this->storeAnswer($num1 + $num2);
 
         $num1Name = $this->getWordFromNumber($num1);
         $num2Name = $this->getWordFromNumber($num2);
 
-        return "What is the sum of $num1Name and $num2Name?";
+        if (rand(0, 1))
+            return "What is the sum of $num1Name and $num2Name?";
+        else
+            return "What is $num1Name plus $num2Name?";
     }
 
     /**
@@ -97,7 +107,7 @@ class TextCaptcha {
 
         $smallerNumberName = $this->getWordFromNumber($smallerNumber);
         $largerNumberName = $this->getWordFromNumber($largerNumber);
-        $_SESSION[$this->sessionVariableName] = $largerNumber - $smallerNumber;
+        $this->storeAnswer($largerNumber - $smallerNumber);
 
         return "What is $largerNumberName minus $smallerNumberName?";
     }
@@ -112,12 +122,15 @@ class TextCaptcha {
         $num1 = rand(0, 10);
         $num2 = rand(0, 10);
 
-        $_SESSION[$this->sessionVariableName] = $num1 * $num2;
+        $this->storeAnswer($num1 * $num2);
 
         $num1Name = $this->getWordFromNumber($num1);
         $num2Name = $this->getWordFromNumber($num2);
 
-        return "What is $num1Name multiplied by $num2Name?";
+        if (rand(0, 1))
+            return "What is $num1Name multiplied by $num2Name?";
+        else
+            return "What is $num1Name times $num2Name?";
     }
 
     /**
@@ -133,8 +146,39 @@ class TextCaptcha {
 
         $dividendName = $this->getWordFromNumber($dividend);
         $divisorName = $this->getWordFromNumber($divisor);
-        $_SESSION[$this->sessionVariableName] = $quotient;
+        $this->storeAnswer($quotient);
         return "What is $dividendName divided by $divisorName?";
+    }
+
+    /**
+     * For a range of three unique numbers, ask which one is largest or smallest
+     */
+    private function getNumberProblem() {
+        $numbers = $this->getUniqueIntegers(3);
+
+        // make a string containing the names of the numbers (e.g. "one, two, or three")
+        $numberString = '';
+        for ($i = 0; $i < count($numbers); $i++) {
+            $numberName = $this->getWordFromNumber($numbers[$i]);
+            if ($i == count($numbers) - 1) {
+                // the last number
+                $numberString .= "or $numberName";
+            }
+            else
+                $numberString .= "$numberName, ";
+        }
+
+        if (rand(0, 1)) {
+            // ask which is smallest
+            sort($numbers); // so the first element contains the smallest number
+            $this->storeAnswer($numbers[0]);
+            return "Which is smallest: $numberString?";
+        } else {
+            // ask which is largest
+            rsort($numbers); // so the first element contains the largest number
+            $this->storeAnswer($numbers[0]);
+            return "Which is largest: $numberString?";
+        }
     }
 
     /**
@@ -200,6 +244,38 @@ class TextCaptcha {
             }
         }
         return FALSE;
+    }
+
+    /**
+     * Store an answer in the session
+     */
+    private function storeAnswer($answer) {
+        $_SESSION[$this->sessionVariableName] = $answer;
+    }
+
+    /**
+     * Returns an array of unique integers between 0 and 100
+     * 
+     * @param int $howMany
+     */
+    private function getUniqueIntegers($howMany) {
+        $min = 0;
+        $max = 100;
+
+        // ensure that the requested number of unique integers does not exceed those in the range
+        if ($howMany < $max) {
+            $numbers = array();
+            for ($i = 0; $i < $howMany; $i++) {
+                $newNum = rand($min, $max);
+                while (in_array($newNum, $numbers)) {
+                    $newNum = rand($min, $max);
+                }
+                $numbers[] = $newNum;
+            }
+            return $numbers;
+        }
+        else
+            throw new Exception("Requested numbers are out of range!");
     }
 
 }
