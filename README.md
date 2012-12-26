@@ -1,7 +1,7 @@
 TextCaptcha
 ===========
 
-Prevent form spam by generating random, accessible arithmetic questions with this lightweight PHP class.
+Prevent form spam by generating random, accessible arithmetic and logic questions with this lightweight PHP class.
 
 Examples:
 
