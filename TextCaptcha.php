@@ -183,7 +183,8 @@ class TextCaptcha {
             "rainbow",
             "starfish",
             "helicopter",
-            "airplane"
+            "airplane",
+            "chocolate"
         );
 
         $numberNames = array(
