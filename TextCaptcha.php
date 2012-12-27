@@ -4,7 +4,7 @@
  * Generate random text-based CAPTCHAs with simple arithmetic quesions
  *
  * @author Theodore Brown
- * @version 2012.12.24
+ * @version 2012.12.27
  */
 class TextCaptcha {
 
