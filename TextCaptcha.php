@@ -37,7 +37,7 @@ class TextCaptcha {
             unset($_SESSION[$this->sessionVariableName]);
 
             // both numeric and textual answers are acceptable
-            if ($answer == $storedAnswer || $answer == $this->getWordFromNumber($storedAnswer))
+            if ($answer == $storedAnswer || $answer === $this->getWordFromNumber($storedAnswer))
                 return TRUE;
             else
                 throw new Exception("Incorrect captcha response");
@@ -50,10 +50,13 @@ class TextCaptcha {
      * Important: call this method AFTER checking the user's response since it will replace the session answer variable
      */
     public function getNewQuestion() {
-        if (rand(0, 2) == 2) {
-            // a one-in-three chance of getting a random logic question
+        $function = rand(0, 2);
+
+        if ($function == 0)
+            return $this->getLetterProblem();
+        elseif ($function == 1)
             return $this->getNumberProblem();
-        } else {
+        else {
             // get a random arithmetic question
             // get a random number between 1 and 4 to determine whether to add, subtract, multiply, or divide
             $function = rand(1, 4);
@@ -151,7 +154,62 @@ class TextCaptcha {
     }
 
     /**
+     * Get a random letter position question
+     * Example: "What is the fifth letter in Tokyo?"
+     */
+    private function getLetterProblem() {
+        $words = array(
+            "purple",
+            "racecar",
+            "computer",
+            "snowboard",
+            "kitten",
+            "donkey",
+            "apple",
+            "banana",
+            "pencil",
+            "backpack",
+            "mirror",
+            "basketball",
+            "football",
+            "piano",
+            "spinach",
+            "orange",
+            "potato",
+            "skyscraper",
+            "battleship",
+            "cheesecake"
+        );
+
+        $numberNames = array(
+            "first",
+            "second",
+            "third",
+            "fourth",
+            "fifth"
+        );
+
+        $randomWordPosition = array_rand($words);
+        $randomWord = $words[$randomWordPosition];
+        $randomWordLength = strlen($randomWord);
+
+        // only ask for one of the first five letters (to keep it simple)
+        if ($randomWordLength > 5)
+            $max = 5;
+        else
+            $max = $randomWordLength;
+
+        $randLetterPosition = rand(0, $max - 1);
+        $letterArray = str_split($randomWord);
+        $randLetter = $letterArray[$randLetterPosition]; // this is the answer
+        $letterPosName = $numberNames[$randLetterPosition];
+        $this->storeAnswer($randLetter);
+        return "What is the $letterPosName letter in $randomWord?";
+    }
+
+    /**
      * For a range of three unique numbers, ask which one is largest or smallest
+     * Example: "Which is largest: twenty-one, sixteen, or eighty-four?"
      */
     private function getNumberProblem() {
         $numbers = $this->getUniqueIntegers(3);
@@ -220,9 +278,8 @@ class TextCaptcha {
             100 => "one hundred"
         );
 
-        if (!is_int($number))
-            throw new Exception("Not a valid number!");
-        else {
+        // make sure the number is an integer
+        if (is_int($number)) {
             if (($number >= 0 && $number <= 20) || $number == 100)
                 return $numberNames[$number];
             elseif ($number < 100) {

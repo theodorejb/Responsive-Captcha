@@ -5,13 +5,12 @@ Prevent form spam by generating random, accessible arithmetic and logic question
 
 Examples:
 
-* "What is fifteen divided by three?"
+* "What is the fourth letter in backpack?"
 * "What is the sum of four and six?"
 * "What is eight multiplied by two?"
-* "What is five minus one?"
 * "Which is smallest: sixty-six, one hundred, or twenty-two?"
 
-Users can respond with either the numeric or textual version of the answer (e.g. "16" or "sixteen").
+Users can respond with either the numeric or textual version of an answer (e.g. "16" or "sixteen").
 
 TextCaptcha was originally created by Theodore Brown (http://designedbytheo.com). Feel free to use this code or modify it to suit your needs as long as it is accompanied by this readme.
 
