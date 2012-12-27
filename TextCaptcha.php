@@ -179,7 +179,9 @@ class TextCaptcha {
             "skyscraper",
             "battleship",
             "cheesecake",
-            "sunshine"
+            "sunshine",
+            "rainbow",
+            "starfish"
         );
 
         $numberNames = array(
