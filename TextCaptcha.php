@@ -178,7 +178,8 @@ class TextCaptcha {
             "potato",
             "skyscraper",
             "battleship",
-            "cheesecake"
+            "cheesecake",
+            "sunshine"
         );
 
         $numberNames = array(

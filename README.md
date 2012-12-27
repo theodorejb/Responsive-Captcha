@@ -5,7 +5,7 @@ Prevent form spam by generating random, accessible arithmetic and logic question
 
 Examples:
 
-* "What is the fourth letter in backpack?"
+* "What is the fourth letter in snowboard?"
 * "What is the sum of four and six?"
 * "What is eight multiplied by two?"
 * "Which is smallest: sixty-six, one hundred, or twenty-two?"
