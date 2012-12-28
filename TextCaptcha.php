@@ -198,17 +198,24 @@ class TextCaptcha {
         $randomWordPosition = array_rand($words);
         $randomWord = $words[$randomWordPosition];
         $randomWordLength = strlen($randomWord);
-
-        // only ask for one of the first five letters (to keep it simple)
-        if ($randomWordLength > 5)
-            $max = 5;
-        else
-            $max = $randomWordLength;
-
-        $randLetterPosition = rand(0, $max - 1);
         $letterArray = str_split($randomWord);
-        $randLetter = $letterArray[$randLetterPosition]; // this is the answer
-        $letterPosName = $numberNames[$randLetterPosition];
+
+        // there should be a chance of getting the last letter
+        if (rand(1, $randomWordLength) == $randomWordLength) {
+            $letterPosName = 'last';
+            $randLetter = end($letterArray); // get the last letter in the word
+        } else {
+            // ask for one of the first five letters (to keep it simple)
+            if ($randomWordLength > 5)
+                $max = 5;
+            else
+                $max = $randomWordLength;
+
+            $randLetterPosition = rand(0, $max - 1);
+            $randLetter = $letterArray[$randLetterPosition]; // this is the answer
+            $letterPosName = $numberNames[$randLetterPosition];
+        }
+
         $this->storeAnswer($randLetter);
         return "What is the $letterPosName letter in $randomWord?";
     }
