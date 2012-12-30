@@ -184,7 +184,8 @@ class TextCaptcha {
             "starfish",
             "helicopter",
             "airplane",
-            "chocolate"
+            "chocolate",
+            "railroad"
         );
 
         $numberNames = array(
