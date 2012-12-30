@@ -161,6 +161,7 @@ class TextCaptcha {
         $words = array(
             "airplane",
             "basketball",
+            "butterfly",
             "chocolate",
             "donkey",
             "dumpling",
