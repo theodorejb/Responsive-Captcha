@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Generate random text-based CAPTCHAs with simple arithmetic quesions
+ * Generate random text-based CAPTCHAs with simple arithmetic and logic quesions
  *
  * @author Theodore Brown
- * @version 2012.12.27
+ * @version 2012.12.30
  */
 class TextCaptcha {
 
@@ -159,33 +159,40 @@ class TextCaptcha {
      */
     private function getLetterProblem() {
         $words = array(
-            "purple",
-            "racecar",
-            "computer",
-            "snowboard",
-            "kitten",
-            "donkey",
-            "apple",
-            "banana",
-            "pencil",
-            "backpack",
-            "mirror",
-            "basketball",
-            "football",
-            "piano",
-            "panda",
-            "orange",
-            "dumpling",
-            "skyscraper",
-            "battleship",
-            "cheesecake",
-            "sunshine",
-            "rainbow",
-            "starfish",
-            "helicopter",
             "airplane",
+            "basketball",
             "chocolate",
-            "railroad"
+            "donkey",
+            "dumpling",
+            "elephant",
+            "football",
+            "grandfather",
+            "helicopter",
+            "island",
+            "juniper",
+            "kitten",
+            "laughter",
+            "mirror",
+            "nation",
+            "orange",
+            "piano",
+            "pencil",
+            "quartet",
+            "rainbow",
+            "racecar",
+            "railroad",
+            "snowboard",
+            "skyscraper",
+            "sunshine",
+            "starfish",
+            "transparent",
+            "ultraviolet",
+            "velocity",
+            "windshield",
+            "xylophone",
+            "yesterday",
+            "yellow",
+            "zebra"
         );
 
         $numberNames = array(
