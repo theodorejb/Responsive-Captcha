@@ -14,7 +14,7 @@ Users can respond with either the numeric or textual version of an answer (e.g. 
 
 TextCaptcha was originally created by Theodore Brown (http://designedbytheo.com). Feel free to use this code or modify it to suit your needs as long as it is accompanied by this readme.
 
-For more background info on this project, see my blog post: http://designedbytheo.com/blog/2012/12/textcaptcha-a-lightweight-php-class-for-preventing-spam/
+For background info on this project, see my blog post: http://designedbytheo.com/blog/2012/12/textcaptcha-a-lightweight-php-class-for-preventing-spam/
 
 Usage guide
 -----------
