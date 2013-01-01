@@ -15,6 +15,8 @@ class TextCaptcha {
             // no session has been started; try starting it
             if (!session_start())
                 throw new Exception("Unable to start session");
+            else
+                session_regenerate_id (TRUE);
         }
     }
 
