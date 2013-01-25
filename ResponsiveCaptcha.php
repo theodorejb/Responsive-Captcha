@@ -4,11 +4,11 @@
  * Generate random text-based CAPTCHAs with simple arithmetic and logic quesions
  *
  * @author Theodore Brown
- * @version 2012.12.30
+ * @version 2013.01.25
  */
-class TextCaptcha {
+class ResponsiveCaptcha {
 
-    private $sessionVariableName = "TextCaptchaAnswer";
+    private $sessionVariableName = "ResponsiveCaptchaAnswer";
 
     public function __construct() {
         if (session_id() == '') {
