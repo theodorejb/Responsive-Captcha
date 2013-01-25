@@ -1,7 +1,7 @@
-TextCaptcha
-===========
+Responsive Captcha
+==================
 
-Prevent form spam by generating random, accessible arithmetic and logic questions with this lightweight PHP class.
+Prevent form spam by generating random, accessible arithmetic and logic questions with this lightweight PHP class. Designed from the ground up to be user-friendly and easily fit in to a mobile-optimized, responsive website.
 
 Examples:
 
@@ -12,28 +12,28 @@ Examples:
 
 Users can respond with either the numeric or textual version of an answer (e.g. "16" or "sixteen").
 
-TextCaptcha was originally created by Theodore Brown (http://designedbytheo.com). Feel free to use this code or modify it to suit your needs as long as it is accompanied by this readme.
+Responsive Captcha was originally created by Theodore Brown (http://designedbytheo.com). Feel free to use this code or modify it to suit your needs as long as it is accompanied by this readme.
 
 For background info on this project, see my blog post: http://designedbytheo.com/blog/2012/12/textcaptcha-a-lightweight-php-class-for-preventing-spam/
 
 Usage guide
 -----------
 
-1. Import and initialize the TextCaptcha class
+1. Import and initialize the ResponsiveCaptcha class
 
         <?php
-            require 'TextCaptcha.php';
-            $textCaptcha = new TextCaptcha();
+            require 'ResponsiveCaptcha.php';
+            $captcha = new ResponsiveCaptcha();
         ?>
 
 2. Check whether the user's response is correct
 
         <?php
             if (isset($_POST['captcha'])) {
-                $captcha = $_POST['captcha'];
+                $answer = $_POST['captcha'];
         
                 try {
-                    $textCaptcha->checkAnswer($captcha);
+                    $captcha->checkAnswer($answer);
                     // code to execute if the captcha answer is correct
                 } catch (Exception $exc) {
                     // the captcha answer is incorrect
@@ -46,7 +46,7 @@ Usage guide
 3. Get a new question to display in your form
 
         <label for="captcha-field">
-            <?php echo $textCaptcha->getNewQuestion() ?>
+            <?php echo $captcha->getNewQuestion() ?>
         </label>
         <input type="text" name="captcha" id="captcha-field" />
 
