@@ -21,33 +21,34 @@ Usage guide
 
 1. Import and initialize the ResponsiveCaptcha class
 
-        <?php
-            require 'ResponsiveCaptcha.php';
-            $captcha = new ResponsiveCaptcha();
-        ?>
+	```php
+	require 'ResponsiveCaptcha.php';
+	$captcha = new ResponsiveCaptcha();
+	```
 
 2. Check whether the user's response is correct
 
-        <?php
-            if (isset($_POST['captcha'])) {
-                $answer = $_POST['captcha'];
-        
-                try {
-                    $captcha->checkAnswer($answer);
-                    // code to execute if the captcha answer is correct
-                } catch (Exception $exc) {
-                    // the captcha answer is incorrect
-                    $captchaError = $exc->getMessage(); // display this error message in your form
-                }
+    ```php
+	if (isset($_POST['captcha'])) {
+		$answer = $_POST['captcha'];
 
-            }
-        ?>
+		try {
+			$captcha->checkAnswer($answer);
+			// code to execute if the captcha answer is correct
+		} catch (Exception $exc) {
+			// the captcha answer is incorrect
+			$captchaError = $exc->getMessage(); // display this error message in your form
+		}
+	}
+    ```
 
 3. Get a new question to display in your form
 
-        <label for="captcha-field">
-            <?php echo $captcha->getNewQuestion() ?>
-        </label>
-        <input type="text" name="captcha" id="captcha-field" />
+	```html
+	<label for="captcha-field">
+		<?php echo $captcha->getNewQuestion() ?>
+	</label>
+	<input type="text" name="captcha" id="captcha-field" />
+	```
 
     Important: only call the `getNewQuestion()` method AFTER checking the user's response, since it will replace the answer session variable.
