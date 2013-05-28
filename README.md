@@ -12,8 +12,6 @@ Examples:
 
 Users can respond with either the numeric or textual version of an answer (e.g. "16" or "sixteen").
 
-Responsive Captcha was originally created by Theodore Brown. Feel free to use this code or modify it to suit your needs as long as it is accompanied by this readme.
-
 For background info on this project, see my blog post: http://designedbytheo.com/blog/2012/12/responsive-captcha-a-lightweight-php-class-for-preventing-spam/
 
 Usage guide
