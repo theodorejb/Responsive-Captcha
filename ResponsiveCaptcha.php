@@ -4,7 +4,7 @@
  * Generate random text-based CAPTCHAs with simple arithmetic and logic quesions
  *
  * @author Theodore Brown
- * @version 2013.01.25
+ * @version 2013.08.01
  */
 class ResponsiveCaptcha {
 
@@ -16,7 +16,7 @@ class ResponsiveCaptcha {
             if (!session_start())
                 throw new Exception("Unable to start session");
             else
-                session_regenerate_id (TRUE);
+                session_regenerate_id();
         }
     }
 
