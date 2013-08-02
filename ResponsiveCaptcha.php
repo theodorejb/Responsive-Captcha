@@ -1,10 +1,12 @@
 <?php
 
 /**
- * Generate random text-based CAPTCHAs with simple arithmetic and logic quesions
+ * Generate random text-based CAPTCHAs with simple arithmetic and logic questions
+ * Website: https://github.com/theodorejb/responsive-Captcha
+ * Updated: 2013-08-01
  *
  * @author Theodore Brown
- * @version 2013.08.01
+ * @version 1.0.1
  */
 class ResponsiveCaptcha {
 
