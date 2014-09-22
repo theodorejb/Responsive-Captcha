@@ -2,13 +2,6 @@
     "name": "theodorejb/responsive-captcha",
     "description": "Generate mobile-friendly, accessible CAPTCHAs",
     "license": "MIT",
-    "keywords": [
-        "CAPTCHA",
-        "responsive",
-        "accessible",
-        "random",
-        "textual"
-    ],
     "authors": [
         {
             "name": "Theodore Brown",
