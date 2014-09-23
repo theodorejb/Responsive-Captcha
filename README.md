@@ -1,6 +1,6 @@
 # Responsive Captcha
 
-[![Build Status](https://travis-ci.org/theodorejb/Responsive-Captcha.svg?branch=master)](https://travis-ci.org/theodorejb/Responsive-Captcha)
+[![Packagist Version](https://img.shields.io/packagist/v/theodorejb/responsive-captcha.svg)](https://packagist.org/packages/theodorejb/responsive-captcha) [![License](https://img.shields.io/packagist/l/theodorejb/responsive-captcha.svg)](https://packagist.org/packages/theodorejb/responsive-captcha) [![Build Status](https://travis-ci.org/theodorejb/Responsive-Captcha.svg?branch=master)](https://travis-ci.org/theodorejb/Responsive-Captcha)
 
 Prevent form spam by generating random, accessible arithmetic and logic questions with this lightweight PHP class. Designed from the ground up to be user-friendly and easily fit in to a mobile-optimized, responsive website.
 
