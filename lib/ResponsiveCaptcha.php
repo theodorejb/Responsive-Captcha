@@ -33,8 +33,12 @@ class ResponsiveCaptcha
         $answer  = strtolower(trim($submittedResponse));
         $realAns = $this->getAnswer();
 
-        // both numeric and textual answers are acceptable
-        return $answer == $realAns || (is_int($answer) && $answer === $this->getWordFromNumber($realAns));
+        if (is_int($realAns)) {
+            // both numeric and textual answers are acceptable
+            return $answer === $this->getWordFromNumber($realAns) || filter_var($answer, FILTER_VALIDATE_INT) === $realAns;
+        } else {
+            return $answer === $realAns;
+        }
     }
 
     /**
