@@ -13,7 +13,7 @@ Examples:
 
 Users can respond with either the numeric or textual version of an answer (e.g. "16" or "sixteen").
 
-For background info on this project, see my blog post: http://designedbytheo.com/blog/2012/12/responsive-captcha-a-lightweight-php-class-for-preventing-spam/
+For background info on this project, see my blog post: http://blog.theodorejb.me/responsive-captcha/
 
 ## Installation
 
