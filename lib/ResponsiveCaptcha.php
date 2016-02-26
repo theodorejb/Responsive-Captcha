@@ -67,7 +67,7 @@ class ResponsiveCaptcha
 
     /**
      * @return int|string The stored CAPTCHA answer
-     * @throws Exception If no CAPTCHA question has been generated
+     * @throws \Exception If no CAPTCHA question has been generated
      */
     public function getAnswer()
     {
@@ -379,11 +379,11 @@ class ResponsiveCaptcha
     private function getUniqueIntegers($howMany)
     {
         $possibilities = range(0, 100);
-        $keys          = array_rand($possibilities, $howMany);
-        $numbers       = [];
+        shuffle($possibilities);
+        $numbers = [];
 
-        foreach ($keys as $key) {
-            $numbers[] = $possibilities[$key];
+        for ($i = 0; $i < $howMany; $i++) {
+            $numbers[] = $possibilities[$i];
         }
 
         return $numbers;

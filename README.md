@@ -15,19 +15,9 @@ Users can respond with either the numeric or textual version of an answer (e.g. 
 
 For background info on this project, see my blog post: http://blog.theodorejb.me/responsive-captcha/
 
-## Installation
+## Install via Composer
 
-To install via [Composer](https://getcomposer.org/), add the following to the composer.json file in your project root:
-
-```json
-{
-    "require": {
-        "theodorejb/responsive-captcha": "2.x"
-    }
-}
-```
-
-Then run `composer install` and require `vendor/autoload.php` in your application's bootstrap file.
+`composer require theodorejb/responsive-captcha`
 
 ## Usage
 
