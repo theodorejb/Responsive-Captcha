@@ -280,6 +280,7 @@ class ResponsiveCaptcha
     private function getNumberProblem()
     {
         $numbers = $this->getUniqueIntegers(3);
+        shuffle($numbers);
 
         // make a string containing the names of the numbers (e.g. "one, two, or three")
         $numberString = '';
