@@ -1,16 +1,25 @@
 language: php
+sudo: required
+dist: trusty
+group: edge
 
 php:
-  - 5.4
-  - 5.5
-  - 5.6
   - 7.0
-  - hhvm
+  - 7.1
   - nightly
+  - hhvm-3.12
+  - hhvm-nightly
+
+before_install:
+  - if [[ $TRAVIS_PHP_VERSION = hhvm* ]]; then echo hhvm.php7.all=1 >> /etc/hhvm/php.ini; fi
 
 install:
   - composer install
 
+script:
+  - vendor/bin/phpunit
+
 matrix:
   allow_failures:
-    - php: nightly
+    - php: hhvm-3.12
+    - php: hhvm-nightly

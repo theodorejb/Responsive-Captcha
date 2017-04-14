@@ -2,11 +2,13 @@
 
 namespace theodorejb;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests for the ResponsiveCaptcha class
  * @author Theodore Brown <https://github.com/theodorejb>
  */
-class ResponsiveCaptchaTest extends \PHPUnit_Framework_TestCase
+class ResponsiveCaptchaTest extends TestCase
 {
     public function testGetWordFromNumber()
     {
