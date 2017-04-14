@@ -15,6 +15,6 @@
         "phpunit/phpunit": "^6.1"
     },
     "autoload": {
-        "psr-4": {"theodorejb\\": "lib/"}
+        "files": ["src/QuestionAnswer.php", "src/ResponsiveCaptcha.php"]
     }
 }

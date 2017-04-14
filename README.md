@@ -2,7 +2,7 @@
 
 [![Packagist Version](https://img.shields.io/packagist/v/theodorejb/responsive-captcha.svg)](https://packagist.org/packages/theodorejb/responsive-captcha) [![License](https://img.shields.io/packagist/l/theodorejb/responsive-captcha.svg)](https://packagist.org/packages/theodorejb/responsive-captcha) [![Build Status](https://travis-ci.org/theodorejb/Responsive-Captcha.svg?branch=master)](https://travis-ci.org/theodorejb/Responsive-Captcha)
 
-Prevent form spam by generating random, accessible arithmetic and logic questions with this lightweight PHP class. Designed from the ground up to be user-friendly and easily fit in to a mobile-optimized, responsive website.
+Prevent form spam by generating random, accessible arithmetic and logic questions.
 
 Examples:
 
@@ -21,34 +21,34 @@ For background info on this project, see my blog post: http://blog.theodorejb.me
 
 ## Usage
 
-1. Import and initialize the ResponsiveCaptcha class:
+1. Generate a random question:
 
     ```php
-    use theodorejb\ResponsiveCaptcha;
-    $captcha = new ResponsiveCaptcha();
+    use function theodorejb\ResponsiveCaptcha\{randomQuestion, checkAnswer};
+
+    $qa = randomQuestion();
+    $realAnswer = $qa->getAnswer(); // save somewhere (e.g. in session or encrypted single-use token)
     ```
 
-2. Check whether the user's response is correct:
+2. Display question in form:
+
+    ```html+php
+    <label>
+	    <?= $qa->getQuestion() ?>
+        <input type="text" name="captcha" />
+	</label>
+	```
+
+3. Check whether the user's response is correct:
 
     ```php
     $answer = filter_input(INPUT_POST, "captcha");
 
     if ($answer !== null) {
-        if ($captcha->checkAnswer($answer)) {
+        if (checkAnswer($answer, $realAnswer)) {
             // code to execute if the captcha answer is correct
         } else {
             // the answer is incorrect - show an error to the user
         }
     }
     ```
-
-3. Get a new question to display in your form:
-
-    ```html+php
-    <label>
-	    <?= $captcha->getNewQuestion() ?>
-        <input type="text" name="captcha" />
-	</label>
-	```
-
-    Important: only call the `getNewQuestion()` method AFTER checking the user's response, since it will replace the answer session variable.
