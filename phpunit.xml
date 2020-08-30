@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit bootstrap="vendor/autoload.php" color="true">
+<phpunit bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="all">
             <directory>./test</directory>
         </testsuite>
     </testsuites>

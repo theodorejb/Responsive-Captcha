@@ -36,8 +36,8 @@ class ResponsiveCaptchaTest extends TestCase
 
         // the array should contain 5 unique integers
         $this->assertCount(5, $array);
-        $this->assertSame($array, array_unique($array));
-        $this->assertInternalType('int', $array[0]);
+        $this->assertSame(array_unique($array), $array);
+        $this->assertIsInt($array[0]);
     }
 
     public function testGetAdditionProblem()
