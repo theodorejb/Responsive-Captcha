@@ -140,7 +140,7 @@ function getWordFromNumber(int $number): string
     }
 
     // split the number into an array of digits
-    list($tensPlace, $onesPlace) = str_split((string)$number);
+    [$tensPlace, $onesPlace] = str_split((string)$number);
 
     // get the name of the tens place
     $numberName = $numberNames[$tensPlace . 0];
@@ -182,7 +182,7 @@ function getSubtractionProblem(int $num1, int $num2): QuestionAnswer
     // the smaller (or equal) number should be subtracted from the larger number
     $numbers = [$num1, $num2];
     sort($numbers); // the first array element is smaller (or equal)
-    list($smaller, $larger) = $numbers;
+    [$smaller, $larger] = $numbers;
     $smallerName = getWordFromNumber($smaller);
     $largerName = getWordFromNumber($larger);
 
@@ -274,19 +274,17 @@ function getNumberProblem(array $numbers, int $format): QuestionAnswer
 }
 
 /**
- * Returns an array of unique, random integers between 0 and 100
+ * Returns an array of unique, random integers
  * @return int[]
  * @internal
  */
-function getUniqueIntegers(int $howMany): array
+function getUniqueIntegers(int $howMany, int $min = 0, int $max = 100): array
 {
-    $possibilities = range(0, 100);
-    shuffle($possibilities);
     $numbers = [];
 
-    for ($i = 0; $i < $howMany; $i++) {
-        $numbers[] = $possibilities[$i];
+    while (count($numbers) < $howMany) {
+        $numbers[random_int($min, $max)] = true;
     }
 
-    return $numbers;
+    return array_keys($numbers);
 }
