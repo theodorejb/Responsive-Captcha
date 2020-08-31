@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.0.1] - 2020-08-31
 ### Changed
+- Updated word list
 - PHP 7.1+ is now required
 - Optimized algorithm for getting unique random integers
 
@@ -37,7 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2013-08-01
 - Initial semver release
 
-[Unreleased]: https://github.com/theodorejb/Responsive-Captcha/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/theodorejb/Responsive-Captcha/compare/v3.0.1...HEAD
+[3.0.1]: https://github.com/theodorejb/Responsive-Captcha/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/theodorejb/Responsive-Captcha/compare/v2.0.2...v3.0.0
 [2.0.2]: https://github.com/theodorejb/Responsive-Captcha/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/theodorejb/Responsive-Captcha/compare/v2.0.0...v2.0.1
