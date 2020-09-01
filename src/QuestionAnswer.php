@@ -6,9 +6,14 @@ namespace theodorejb\ResponsiveCaptcha;
 
 class QuestionAnswer
 {
+    /** @var string */
     private $question;
+    /** @var int|string */
     private $answer;
 
+    /**
+     * @param int|string $answer
+     */
     public function __construct(string $question, $answer)
     {
         $this->question = $question;

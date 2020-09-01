@@ -85,6 +85,7 @@ function randomQuestion(): QuestionAnswer
 
 /**
  * Returns true if the submitted answer matches the real answer
+ * @param int|string $realAnswer
  */
 function checkAnswer(string $submittedAnswer, $realAnswer): bool
 {
@@ -149,11 +150,11 @@ function getWordFromNumber(int $number): string
     [$tensPlace, $onesPlace] = str_split((string)$number);
 
     // get the name of the tens place
-    $numberName = $numberNames[$tensPlace . 0];
+    $numberName = $numberNames[(int) "{$tensPlace}0"];
 
     // add the name of the ones place if it isn't zero
     if ($onesPlace !== '0') {
-        $numberName .= '-' . $numberNames[$onesPlace];
+        $numberName .= '-' . $numberNames[(int) $onesPlace];
     }
 
     return $numberName;
@@ -253,6 +254,7 @@ function getLetterProblem(string $randomWord, int $randLetterPos): QuestionAnswe
 /**
  * For a range of three unique numbers, ask which one is largest or smallest
  * Example: "Which is largest: twenty-one, sixteen, or eighty-four?"
+ * @param int[] $numbers
  * @internal
  */
 function getNumberProblem(array $numbers, int $format): QuestionAnswer
