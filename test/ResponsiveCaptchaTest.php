@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ResponsiveCaptchaTest extends TestCase
 {
-    public function testCheckAnswer()
+    public function testCheckAnswer(): void
     {
         $this->assertTrue(checkAnswer('Five', 5));
         $this->assertTrue(checkAnswer('Five', 'five'));
@@ -16,7 +16,7 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertFalse(checkAnswer('Five', 'six'));
     }
 
-    public function testGetWordFromNumber()
+    public function testGetWordFromNumber(): void
     {
         // it should work for integers between 0 and 20
         $this->assertSame("zero", getWordFromNumber(0));
@@ -30,17 +30,16 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertSame("eighty", getWordFromNumber(80));
     }
 
-    public function testGetUniqueIntegers()
+    public function testGetUniqueIntegers(): void
     {
         $array = getUniqueIntegers(5);
 
         // the array should contain 5 unique integers
         $this->assertCount(5, $array);
         $this->assertSame(array_unique($array), $array);
-        $this->assertIsInt($array[0]);
     }
 
-    public function testGetAdditionProblem()
+    public function testGetAdditionProblem(): void
     {
         $qa = getAdditionProblem(2, 2, 0);
         $this->assertSame("What is two plus two?", $qa->getQuestion());
@@ -51,7 +50,7 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertSame(10, $qa2->getAnswer());
     }
 
-    public function testGetSubtractionProblem()
+    public function testGetSubtractionProblem(): void
     {
         $expected = "What is ten minus five?";
         $qa = getSubtractionProblem(5, 10);
@@ -64,7 +63,7 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertSame(5, $qa2->getAnswer());
     }
 
-    public function testGetMultiplicationProblem()
+    public function testGetMultiplicationProblem(): void
     {
         $qa = getMultiplicationProblem(4, 5, 0);
         $this->assertSame("What is four times five?", $qa->getQuestion());
@@ -75,14 +74,14 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertSame(0, $qa2->getAnswer());
     }
 
-    public function testGetDivisionProblem()
+    public function testGetDivisionProblem(): void
     {
         $qa = getDivisionProblem(7, 4);
         $this->assertSame("What is twenty-eight divided by four?", $qa->getQuestion());
         $this->assertSame(7, $qa->getAnswer());
     }
 
-    public function testGetLetterProblem()
+    public function testGetLetterProblem(): void
     {
         $qa = getLetterProblem("math", 4);
         $expected = "What is the last letter in math?";
@@ -98,7 +97,7 @@ class ResponsiveCaptchaTest extends TestCase
         $this->assertSame('t', $qa3->getAnswer());
     }
 
-    public function testGetNumberProblem()
+    public function testGetNumberProblem(): void
     {
         $qa = getNumberProblem([2, 7, 1], 0);
         $this->assertSame("Which is largest: two, seven, or one?", $qa->getQuestion());
